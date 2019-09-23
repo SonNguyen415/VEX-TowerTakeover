@@ -52,3 +52,13 @@ void LowerArm() {
 void StopArm() {
   LiftMotor.stop(brakeType::hold);
 }
+
+void Forward() {
+  Motor1.spin(directionType::fwd, 10, velocityUnits::pct);
+  Motor2.spin(directionType::fwd, 10, velocityUnits::pct);
+}
+
+void Backward() {
+  Motor1.spin(directionType::rev, 10, velocityUnits::pct);
+  Motor2.spin(directionType::rev, 10, velocityUnits::pct);
+}

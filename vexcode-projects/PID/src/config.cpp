@@ -13,3 +13,6 @@ vex::motor RightBack = vex::motor(vex::PORT20, false);
 
 //Define the motor for the lift system
 vex::motor LiftMotor = vex::motor(vex::PORT3, true);
+
+vex::motor Motor1 = vex::motor(vex::PORT1, true);
+vex::motor Motor2 = vex::motor(vex::PORT2, false);
