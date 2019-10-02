@@ -1,9 +1,9 @@
 #include "config.cpp"
 
-float LIFT_VELOCITY = 50;
-float SPEED_MODIFIER_INCREMENT= 0.25;
-float MIN_VELOCITY_DECIMAL = 0.1;
-float MAX_VELOCITY_DECIMAL  = 0.1;
+const float LIFT_VELOCITY = 50;
+const float SPEED_MODIFIER_INCREMENT= 0.25;
+const float MIN_VELOCITY_DECIMAL = 0.1;
+const float MAX_VELOCITY_DECIMAL  = 0.1;
 
 float speed_modifier = 0.5;
 

@@ -10,8 +10,8 @@
 
 int main() {
   Move(1000, 1000, 50);
-  Controller.ButtonL1.pressed(Forward);
-  Controller.ButtonR1.pressed(Backward);
+  //Controller.ButtonL1.pressed(Forward);
+  //Controller.ButtonR1.pressed(Backward);
   // Controller.ButtonL1.pressed(Faster);
   // Controller.ButtonL2.pressed(Slower);
   // Controller.ButtonR1.pressed(RaiseArm);

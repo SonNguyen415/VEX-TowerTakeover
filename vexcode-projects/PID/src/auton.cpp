@@ -1,9 +1,9 @@
 #include "user.cpp"
 
-int PROPORTION_CONSTANT = 6;
-int DERIVATIVE_CONSTANT = 8;
-int INTEGRAL_CONSTANT = 20;
-float MIN_VELOCITY_PERCENTAGE = 1;
+const int PROPORTION_CONSTANT = 6;
+const int DERIVATIVE_CONSTANT = 8;
+const int INTEGRAL_CONSTANT = 20;
+const float MIN_VELOCITY_PERCENTAGE = 1;
 
 void Move(float leftDestination, float rightDestination, float maxVelocity) {
   //First we must reset the motors rotation values to start at 0
@@ -92,3 +92,9 @@ void Move(float leftDestination, float rightDestination, float maxVelocity) {
   }
   return;
 }
+
+
+/*States:
+1. Rest
+2. 
+*/
