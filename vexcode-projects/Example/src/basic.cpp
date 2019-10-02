@@ -43,8 +43,3 @@ float returnValueTimes5(float input) {
 //My value will equate to the constant value multiplied by 5
 float myValue = returnValueTimes5(CONSTANT_VALUE); 
 
-<<<<<<< HEAD
-///yes//no
-=======
-///yes//NO
->>>>>>> d2337605656b5443745a981e3eaa3f97b8c76ee8
