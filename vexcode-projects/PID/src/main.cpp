@@ -1,27 +1,41 @@
-/*----------------------------------------------------------------------------*/
-/*                                                                            */
-/*    Module:       main.cpp                                                  */
-/*    Author:       imperium                                                  */
-/*    Created:      Tue Sep 03 2019                                           */
-/*    Description:  V5 project                                                */
-/*                                                                            */
-/*----------------------------------------------------------------------------*/
-#include "auton.cpp"
+// To complete the VEXcode V5 Text project upgrade process, please follow the
+// steps below.
+// 
+// 1. You can use the Robot Configuration window to recreate your V5 devices
+//   - including any motors, sensors, 3-wire devices, and controllers.
+// 
+// 2. All previous code located in main.cpp has now been commented out. You
+//   will need to migrate this code to the new "int main" structure created
+//   below and keep in mind any new device names you may have set from the
+//   Robot Configuration window. 
+// 
+// If you would like to go back to your original project, a complete backup
+// of your original (pre-upgraded) project was created in a backup folder
+// inside of this project's folder.
+
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// LeftBack             motor         1               
+// LeftFront            motor         2               
+// RightFront           motor         3               
+// RightBack            motor         4               
+// LeftLift             motor         5               
+// RightLift            motor         6               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
+#include "vex.h"
+
+using namespace vex;
 
 int main() {
-  Move(1000, 1000, 50);
-  //Controller.ButtonL1.pressed(Forward);
-  //Controller.ButtonR1.pressed(Backward);
-  // Controller.ButtonL1.pressed(Faster);
-  // Controller.ButtonL2.pressed(Slower);
-  // Controller.ButtonR1.pressed(RaiseArm);
-  // Controller.ButtonR2.pressed(LowerArm);
-  // Controller.ButtonR1.released(StopArm);
-  // Controller.ButtonR2.released(StopArm);
-  while(1) {
-    LeftFront.spin(directionType::fwd, Controller.Axis2.position() * speed_modifier, velocityUnits::pct);
-    LeftBack.spin(directionType::fwd, Controller.Axis2.position() * speed_modifier, velocityUnits::pct);
-    RightFront.spin(directionType::fwd, Controller.Axis3.position() * speed_modifier, velocityUnits::pct);
-    RightBack.spin(directionType::fwd, Controller.Axis3.position() * speed_modifier, velocityUnits::pct);
-  }
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  vexcodeInit();
+  
 }
+
+// // ---- START VEXCODE CONFIGURED DEVICES ----
+// // Robot Configuration:
+// // [Name]               [Type]       [Port(s)]
+// 
