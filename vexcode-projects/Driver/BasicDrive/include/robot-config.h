@@ -10,6 +10,8 @@ extern motor R1;
 extern motor R2;
 extern motor A1;
 extern motor A2;
+extern motor I1;
+extern motor I2;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.
