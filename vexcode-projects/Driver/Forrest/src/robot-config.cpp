@@ -11,8 +11,8 @@ brain  Brain;
 controller Controller1 = controller(primary);
 motor Left = motor(PORT20, ratio18_1, false);
 motor Right = motor(PORT10, ratio18_1, true);
-motor LeftLift = motor(PORT11, ratio18_1, false);
-motor RightLift = motor(PORT1, ratio18_1, true);
+motor Lift1 = motor(PORT11, ratio18_1, false);
+motor Lift2 = motor(PORT1, ratio18_1, true);
 
 // VEXcode generated functions
 
