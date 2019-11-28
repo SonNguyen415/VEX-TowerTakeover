@@ -8,6 +8,8 @@ extern motor L1;
 extern motor L2;
 extern motor R1;
 extern motor R2;
+extern smartdrive Drivetrain;
+
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.
