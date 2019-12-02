@@ -13,6 +13,7 @@ motor Left = motor(PORT20, ratio18_1, false);
 motor Right = motor(PORT10, ratio18_1, true);
 motor Lift1 = motor(PORT11, ratio18_1, false);
 motor Lift2 = motor(PORT1, ratio18_1, true);
+motor Intake = motor(PORT2, ratio18_1, false);
 
 // VEXcode generated functions
 

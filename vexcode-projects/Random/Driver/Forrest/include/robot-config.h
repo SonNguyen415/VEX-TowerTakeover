@@ -8,6 +8,7 @@ extern motor Left;
 extern motor Right;
 extern motor Lift1;
 extern motor Lift2;
+extern motor Intake;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.
