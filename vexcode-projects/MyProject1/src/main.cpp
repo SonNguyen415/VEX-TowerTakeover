@@ -2,7 +2,7 @@
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
 /*    Author:       imperium                                                  */
-/*    Created:      Sat Nov 02 2019                                           */
+/*    Created:      Thu Nov 07 2019                                           */
 /*    Description:  V5 project                                                */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
@@ -10,31 +10,32 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// L1                   motor         11              
-// L2                   motor         19              
-// R1                   motor         20              
+// L1                   motor         1               
+// L2                   motor         2               
+// R1                   motor         3               
 // R2                   motor         4               
-// Drivetrain           drivetrain    10, 9, G        
+// Motor                motor         5               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-#include "robot-config.cpp"
 using namespace vex;
 
 int main() {
-  // Initializing Robot Configuration. DO NOT REMOVE!
+  // Initializing Robot Configuration.
   vexcodeInit();
+ 
+  const int kP = 5; //A constant to control the proportional speed
+  const float destination = 500; //The final destination
+  Motor.resetRotation();
+  while(1) {
+    //Sensor input
+    double currentRotation = Motor.rotation(degrees); 
 
-  while (1) {
-    //The velocity is equated to the joystick position
-    double left_velocity = Controller1.Axis3.position(pct);
-    double right_velocity = Controller1.Axis2.position(pct);    
-    
-    Left.spin(forward, left_velocity, pct);
-    Right.spin(forward, right_velocity, pct);
-  }
-} 
+    //Computation
+    double error = destination - currentRotation;
+    double motorVelocity = error / kP;
 
-
-
+    //Actuating the actuator
+    Motor.spin(forward, motorVelocity, percent);
+  } 
+}
