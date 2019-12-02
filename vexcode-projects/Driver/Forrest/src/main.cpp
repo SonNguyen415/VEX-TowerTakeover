@@ -49,5 +49,8 @@ int main() {
     Right.setVelocity(Controller1.Axis2.position(percent), percent);
     Left.spin(forward);
     Right.spin(forward);
+
+    Brain.Screen.print(Lift1.rotation(degrees));
+    Brain.Screen.print(Lift2.rotation(degrees));
   }
 }
