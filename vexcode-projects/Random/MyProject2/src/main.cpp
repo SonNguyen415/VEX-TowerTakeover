@@ -12,6 +12,7 @@
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
 // Drivetrain           drivetrain    10, 20, B       
+// Claw                 motor         3               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -23,7 +24,6 @@ int main() {
   vexcodeInit();
   
   //You can set drivetrain stop mode and velocity, just like normal motors
-  Drivetrain.turnFor(90, degrees);
-  Drivetrain.driveFor(50, inches);
+  
 }
     

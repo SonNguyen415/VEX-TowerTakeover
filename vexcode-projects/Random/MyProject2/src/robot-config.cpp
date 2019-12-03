@@ -13,6 +13,7 @@ motor LeftDriveSmart = motor(PORT10, ratio18_1, false);
 motor RightDriveSmart = motor(PORT20, ratio18_1, true);
 gyro TurnGyroSmart = gyro(Brain.ThreeWirePort.B);
 smartdrive Drivetrain= smartdrive(LeftDriveSmart, RightDriveSmart, TurnGyroSmart, 319.19, 320, 130, mm, 1);
+motor Claw = motor(PORT3, ratio18_1, false);
 
 // VEXcode generated functions
 

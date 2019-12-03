@@ -5,6 +5,7 @@ extern brain Brain;
 // VEXcode devices
 extern controller Controller1;
 extern smartdrive Drivetrain;
+extern motor Claw;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.
