@@ -47,6 +47,7 @@ void moveMotor(double setPoint) {
 
     double error1 = setPoint - rotation1;
     double error2 = setPoint - rotation2;
+    
     double error = (error1 + error2) / 2;
     double motorVelocity = error / kP;
     motorVelocity = constrain(motorVelocity, 80, -80);

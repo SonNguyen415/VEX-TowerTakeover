@@ -55,7 +55,7 @@ void moveMotor(double setPoint) {
 
     double error = (error1 + error2) / 2;
     double errorChange = error - oldError;
-    double errorAccumulated = error + errorAccumulated;
+    errorAccumulated = error + errorAccumulated;
 
     double motorVelocity = (error / kP) + (errorAccumulated / kI) - (errorChange / kD); 
     motorVelocity = constrain(motorVelocity, 80, -80);
@@ -98,5 +98,4 @@ int main() {
     Left.spin(forward, Controller1.Axis3.position(), percent);
     Right.spin(forward, Controller1.Axis2.position(), percent);
   }
-
 }
