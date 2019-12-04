@@ -55,20 +55,15 @@ void moveMotor(double setPoint) {
     Lift1.spin(forward, motorVelocity, percent);
     Lift2.spin(forward, motorVelocity, percent);
 
-    Brain.Screen.printAt(1, 50, "%6.1f", Lift1.velocity(percent));
-    Brain.Screen.printAt(1, 80, "%6.1f", Lift2.velocity(percent));
-
     if(error > -TOLERANCE && error < TOLERANCE) {
       Lift1.stop(coast);
       Lift2.stop(coast);
-      Brain.Screen.printAt(1, 100, "Done");
       return;
     }
   }
 }
 
 void raiseLift() {
-  Brain.Screen.printAt(1, 20, "Process start");
   moveMotor(2500);
 }
 

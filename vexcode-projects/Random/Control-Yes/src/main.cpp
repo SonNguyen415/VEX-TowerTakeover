@@ -10,11 +10,11 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Lift1                motor         11              
 // Controller1          controller                    
+// Lift1                motor         11              
 // Lift2                motor         1               
-// Left                 motor         20              
-// Right                motor         10              
+// Left                 motor         10              
+// Right                motor         20              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -38,56 +38,55 @@ void reset() {
   Lift2.resetRotation();
 }
 
-void moveMotor() {
+void moveMotor(double setPoint) {
   reset();
-  double setPoint = 2000;
   double kP = 5;
-  double rotation1 = Lift1.rotation(degrees);
-  double rotation2 = Lift2.rotation(degrees);
+  double kD = 8;
+  double kI = 14;
+  double oldError = 0;
+  while(1) {
+    double rotation1 = Lift1.rotation(degrees);
+    double rotation2 = Lift2.rotation(degrees);
 
-  double error1 = setPoint - rotation1;
-  double error2 = setPoint - rotation2;
-  double error = (error1 + error2) / 2;
-  double motorVelocity = error / kP;
-  motorVelocity = constrain(motorVelocity, 80, -80);
-  
-  Lift1.spin(forward, motorVelocity, percent);
-  Lift2.spin(forward, motorVelocity, percent);
+    double error1 = setPoint - rotation1;
+    double error2 = setPoint - rotation2;
 
-  Brain.Screen.printAt(1, 50, "%6.1f", Lift1.velocity(percent));
-  Brain.Screen.printAt(1, 80, "%6.1f", Lift2.velocity(percent));
+    double error = (error1 + error2) / 2;
+    double errorChange = error - oldError;
+
+    double motorVelocity = (error / kP) - (errorChange / kD); 
+    motorVelocity = constrain(motorVelocity, 80, -80);
+    
+    Lift1.spin(forward, motorVelocity, percent);
+    Lift2.spin(forward, motorVelocity, percent);
+
+    errorChange = oldError;
+
+    if(error > -TOLERANCE && error < TOLERANCE) {
+      Lift1.stop(coast);
+      Lift2.stop(coast);
+      return;
+    }
+  }
 }
 
 void raiseLift() {
-  Brain.Screen.printAt(1, 20, "Process start");
-  moveMotor();
+  moveMotor(2500);
 }
 
 void lowerLift() {
-  moveMotor();
+  moveMotor(-2500);
 }
-
-void stopLift() {
-  Lift1.setStopping(coast);
-  Lift2.setStopping(coast);
-}
-
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
 
-  while(1) {
-    if(Controller1.ButtonUp.pressing()) {
-      raiseLift();
-    }else if (Controller1.ButtonDown.pressing()) {
-      lowerLift();
-    }else {
-      stopLift();
-    }
+  Controller1.ButtonUp.pressed(raiseLift);
+  Controller1.ButtonDown.pressed(lowerLift);
 
+  while(1) {
     Left.spin(forward, Controller1.Axis3.position(), percent);
     Right.spin(forward, Controller1.Axis2.position(), percent);
   }
-
 }

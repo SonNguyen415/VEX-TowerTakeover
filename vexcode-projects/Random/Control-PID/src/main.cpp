@@ -45,7 +45,6 @@ void moveMotor(double setPoint) {
   double kI = 14;
   double errorAccumulated = 0;
   double oldError = 0;
-  Brain.Screen.clearScreen();
   while(1) {
     double rotation1 = Lift1.rotation(degrees);
     double rotation2 = Lift2.rotation(degrees);
@@ -63,16 +62,11 @@ void moveMotor(double setPoint) {
     Lift1.spin(forward, motorVelocity, percent);
     Lift2.spin(forward, motorVelocity, percent);
 
-    Brain.Screen.printAt(1, 30, "6.1%f", error);
-    Brain.Screen.printAt(1, 60, "6.1%f", errorChange);
-    Brain.Screen.printAt(1, 60, "6.1%f", errorAccumulated);
-
     errorChange = oldError;
 
     if(error > -TOLERANCE && error < TOLERANCE) {
       Lift1.stop(coast);
       Lift2.stop(coast);
-      Brain.Screen.printAt(1, 100, "Done");
       return;
     }
   }

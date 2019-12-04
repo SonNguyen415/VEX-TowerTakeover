@@ -10,21 +10,20 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
+// Drivetrain           drivetrain    3, 4, C         
+// Left                 motor         12              
+// Right                motor         5               
 // Controller1          controller                    
-// L1                   motor         11              
-// L2                   motor         19              
-// R1                   motor         20              
-// R2                   motor         4               
-// Drivetrain           drivetrain    10, 9, G        
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-#include "robot-config.cpp"
 using namespace vex;
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+
+  Drivetrain.drive(forward);
 
   while (1) {
     //The velocity is equated to the joystick position

@@ -8,16 +8,13 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
+motor LeftDriveSmart = motor(PORT3, ratio18_1, false);
+motor RightDriveSmart = motor(PORT4, ratio18_1, true);
+gyro TurnGyroSmart = gyro(Brain.ThreeWirePort.C);
+smartdrive Drivetrain= smartdrive(LeftDriveSmart, RightDriveSmart, TurnGyroSmart, 319.19, 320, 130, mm, 1);
+motor Left = motor(PORT12, ratio18_1, false);
+motor Right = motor(PORT5, ratio18_1, false);
 controller Controller1 = controller(primary);
-motor L1 = motor(PORT11, ratio18_1, false);
-motor L2 = motor(PORT19, ratio18_1, false);
-motor R1 = motor(PORT20, ratio18_1, true);
-motor R2 = motor(PORT4, ratio18_1, true);
-gyro TurnGyroSmart = gyro(Brain.ThreeWirePort.G);
-
-motor_group Left(L1, L2); //Group the left wheels into one group
-motor_group Right(R1, R2); //Group the right wheels into one group
-smartdrive Drivetrain= smartdrive(Left, Right, TurnGyroSmart, 319.19, 320, 130, mm, 1);
 
 // VEXcode generated functions
 
