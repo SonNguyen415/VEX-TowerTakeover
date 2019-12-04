@@ -20,6 +20,7 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
+//#include "auton.cpp"
 
 using namespace vex;
 motor_group Mover(M1,M2);
@@ -31,14 +32,14 @@ float speedModifier = 0.5;
 void Faster() {
   speedModifier = speedModifier + 0.2;
   if (speedModifier > 1){
-     speedModifier = 1;
+    speedModifier = 1;
   }
 }
 
 void Slower() {
   speedModifier = speedModifier - 0.2;
   if (speedModifier < 0.1){
-     speedModifier = 0.1;
+    speedModifier = 0.1;
   }
 }
 
@@ -90,6 +91,7 @@ int main() {
     else{
       Mover.stop(hold);
     }
+    
     if (Controller1.ButtonL1.pressing()){
       Grip.spin(forward);
     }
