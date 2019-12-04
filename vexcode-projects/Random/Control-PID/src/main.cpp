@@ -65,8 +65,8 @@ void moveMotor(double setPoint) {
     errorChange = oldError;
 
     if(error > -TOLERANCE && error < TOLERANCE) {
-      Lift1.stop(coast);
-      Lift2.stop(coast);
+      Lift1.stop(hold);
+      Lift2.stop(hold);
       return;
     }
   }
