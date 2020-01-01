@@ -21,18 +21,8 @@
 
 using namespace vex;
 
-motor_group Left(L1, L2);
-motor_group Right(R1, R2);
-
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
-
-  while(1) {
-    float leftAxis = Controller1.Axis3.position(percent);
-    Left.spin(forward, leftAxis, percent);
-        
-  }
-  
 }
