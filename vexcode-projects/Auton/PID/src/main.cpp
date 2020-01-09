@@ -17,17 +17,18 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// LeftBack             motor         1               
-// LeftFront            motor         2               
-// RightFront           motor         3               
-// RightBack            motor         4               
-// LeftLift             motor         5               
-// RightLift            motor         6               
+// L1                   motor         1               
+// L2                   motor         2               
+// R1                   motor         3               
+// R2                   motor         4               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
 
+#include "auton.cpp"
+
 using namespace vex;
+
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
