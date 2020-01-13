@@ -11,7 +11,7 @@ extern motor I1;
 extern motor I2;
 extern motor Lift;
 extern motor Tilter;
-extern drivetrain Drivetrain;
+extern smartdrive Drivetrain;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Text.

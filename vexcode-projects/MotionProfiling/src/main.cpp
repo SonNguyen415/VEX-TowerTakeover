@@ -18,7 +18,7 @@
 // I2                   motor         6               
 // Lift                 motor         7               
 // Tilter               motor         8               
-// Drivetrain           drivetrain    9, 10, 11, 12   
+// Drivetrain           drivetrain    9, 10, 11, 12, B
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
