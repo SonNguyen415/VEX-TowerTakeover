@@ -14,6 +14,7 @@
 // L2                   motor         11              
 // R1                   motor         2               
 // R2                   motor         12              
+// Drivetrain           drivetrain    13, 5, 6, 7, G  
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
