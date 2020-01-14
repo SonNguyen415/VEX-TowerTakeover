@@ -44,8 +44,28 @@ void Slower() {
 }
 
 void Auton() {
-  L.spinFor(forward, (2.3*360), rotationUnits::deg, 50, velocityUnits::pct, false);
-  R.spinFor(forward, (2.3*360), rotationUnits::deg, 50, velocityUnits::pct, false);
+  Mover.setVelocity(30, percent);
+  Grip.setVelocity(40, percent);
+  Mover.spinFor(forward, 120, rotationUnits::deg, false);
+  L.spinFor(forward, (1.5*360), rotationUnits::deg, 80, velocityUnits::pct, false);
+  R.spinFor(forward, (1.5*360), rotationUnits::deg, 80, velocityUnits::pct, true);
+  wait(0.2, timeUnits::sec);
+  DriveTrain.driveFor(reverse, 28, distanceUnits::cm, 50, velocityUnits::pct,true);
+  Grip.spin(forward);
+  Mover.spinFor(forward, -120, rotationUnits::deg, true);
+  wait(0.1, timeUnits::sec);
+  Grip.setPosition(0,degrees);
+  Grip.stop(brake);
+  Grip.rotateTo(-70, degrees);
+  R.spinFor(reverse, ((22)/(10.16)), rotationUnits::rev, 50, velocityUnits::pct, true);
+  DriveTrain.driveFor(forward, 45, distanceUnits::cm, 40, velocityUnits::pct,true);
+  wait(0.5, sec);
+  Grip.spin(forward);
+  wait(0.2, timeUnits::sec);
+  Mover.spinFor(forward,400, rotationUnits::deg, true);
+  DriveTrain.driveFor(reverse, 9, distanceUnits::cm, 40, velocityUnits::pct,true);
+  L.spinFor(reverse, ((22)/(10.16)), rotationUnits::rev, 50, velocityUnits::pct, true);
+  DriveTrain.driveFor(forward, 80, distanceUnits::cm, 30, velocityUnits::pct);
   /*Mover.setVelocity(50, percent);
   Grip.setVelocity(40, percent);
   Grip.rotateTo(-40,degrees);
@@ -63,11 +83,6 @@ int main() {
   vexcodeInit();
   Grip.setPosition(0,degrees);
   Grip.setVelocity(40, percent);
-  Mover.setVelocity(50, percent);
-
-  
-  Mover.rotateFor(50, degrees);
-  DriveTrain.driveFor(forward, 69, distanceUnits::cm, 50, velocityUnits::pct);
  
 
 
@@ -96,7 +111,7 @@ int main() {
       Grip.spin(forward);
     }
     else if(Controller1.ButtonL2.pressing()){
-      Grip.rotateTo(-40, degrees);
+      Grip.stop(brakeType::brake);
     }
   }
 }
