@@ -14,7 +14,6 @@
 // L2                   motor         11              
 // R1                   motor         2               
 // R2                   motor         12              
-// Drivetrain           drivetrain    13, 5, 6, 7, G  
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -33,10 +32,12 @@ double constrain (double constrainedValue, double maxValue, double minValue) {
   if(constrainedValue < -maxValue) {
     return -maxValue;
   }
-  if(constrainedValue < minValue && constrainedValue > 0) {
+  if(constrainedValue < minValue && constrainedValue >= 0) {
+    Brain.Screen.printAt(1, 120, "Less than 1");
     return minValue;
   }
-  if(constrainedValue > -minValue && constrainedValue < 0) {
+  if(constrainedValue > -minValue && constrainedValue <= 0) {
+    Brain.Screen.printAt(1, 120, "Less than 0");
     return -minValue;
   }
   return constrainedValue;
@@ -44,34 +45,36 @@ double constrain (double constrainedValue, double maxValue, double minValue) {
 
 void auton() {
   double midPoint = 500;
-  double endPoint = 1000;
   double maxVelocity = 80;
-  double minVelocity = 1;
+  double minVelocity = 2;
 
   double motorRotation = DriveBase.rotation(deg);
   double motorVelocity = 1;
-  double kP = 30;
-  double oldError = 0;
-  
+  double kP = 8;
+  double kD = 4;
+  double oldRotation = motorRotation;
+
   //Accelerate until mid point
   while (motorRotation < midPoint) {
     motorRotation = DriveBase.rotation(deg);
-    double error = midPoint - motorRotation;
-    double errorChange = abs(oldError - error);
-    motorVelocity += errorChange / kP;
+    double dRotation = motorRotation - oldRotation;
+    motorVelocity = motorRotation / kP -  dRotation / kD;
   /*  if (error != 0) {
       motorVelocity = kP / sqrt(error);
     } else {
       motorVelocity = 0;
     }*/
     motorVelocity = constrain(motorVelocity, maxVelocity, minVelocity);
-    Left.spin(forward, motorVelocity, percent);
-    Right.spin(forward, motorVelocity, percent);
+    DriveBase.spin(forward, motorVelocity, percent);
     Brain.Screen.printAt(1, 40, "%f", motorVelocity);
-    Brain.Screen.printAt(1, 80, "%f", error);
-    Brain.Screen.printAt(1, 120, "%f", error);
+    Brain.Screen.printAt(1, 80, "%f", motorRotation);
 
-    oldError = error;
+    oldRotation = motorRotation;
+  }
+  DriveBase.stop(coast);
+  while(1) {
+    motorRotation = DriveBase.rotation(deg);
+    Brain.Screen.printAt(1, 80, "%f", motorRotation);
   }
 
   /*
